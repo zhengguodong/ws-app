@@ -1,0 +1,13 @@
+
+#main{
+	width: 100%;
+	
+	background-color: #aaffff;
+}
+#bottom{
+	width: 100%;
+	border-top: 1px #3B4144 solid;
+	position: absolute;
+	bottom: 0px;
+}
+

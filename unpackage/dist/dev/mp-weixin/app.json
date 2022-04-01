@@ -1,0 +1,43 @@
+{
+  "pages": [
+    "pages/login/login",
+    "pages/home/home",
+    "pages/index/index",
+    "pages/register/register",
+    "pages/mine/mine",
+    "pages/game/game",
+    "pages/chat/chat",
+    "pages/information/information"
+  ],
+  "subPackages": [],
+  "window": {
+    "navigationBarTextStyle": "white",
+    "navigationBarTitleText": "测试聊天室",
+    "navigationBarBackgroundColor": "#5555ff",
+    "backgroundColor": "#F8F8F8"
+  },
+  "tabBar": {
+    "selectedColor": "#1296db",
+    "list": [
+      {
+        "pagePath": "pages/home/home",
+        "text": "首页",
+        "iconPath": "static/home-fill.png",
+        "selectedIconPath": "static/home.png"
+      },
+      {
+        "pagePath": "pages/game/game",
+        "text": "游戏",
+        "iconPath": "static/atm.png",
+        "selectedIconPath": "static/atm-fill.png"
+      },
+      {
+        "pagePath": "pages/mine/mine",
+        "text": "我的",
+        "iconPath": "static/bussiness-man-fill.png",
+        "selectedIconPath": "static/bussiness.png"
+      }
+    ]
+  },
+  "usingComponents": {}
+}

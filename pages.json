@@ -1,0 +1,107 @@
+{
+	"pages": [
+		{
+		        "path" : "pages/login/login",
+		        "style" :                                                                                    
+		        {
+		            "navigationBarTitleText": "登入",
+		            "enablePullDownRefresh": false
+		        }
+		        
+		    }
+		,{
+		    "path" : "pages/home/home",
+		    "style" :                                                                                    
+		    {
+		        "navigationBarTitleText": "首页",
+		        "enablePullDownRefresh": false,
+				"enablePullDownRefresh":true
+		    }
+		    
+		}
+		,{
+		"path": "pages/index/index",
+		"style": {
+			"navigationBarTitleText": "uni-app"
+		}
+		}    
+        ,{
+            "path" : "pages/register/register",
+            "style" :                                                                                    
+            {
+                "navigationBarTitleText": "注册",
+                "enablePullDownRefresh": false
+            }
+            
+        }
+        
+        ,{
+            "path" : "pages/mine/mine",
+            "style" :                                                                                    
+            {
+                "navigationBarTitleText": "我的",
+                "enablePullDownRefresh": false
+            }
+            
+        }
+        ,{
+            "path" : "pages/game/game",
+            "style" :                                                                                    
+            {
+                "navigationBarTitleText": "游戏",
+                "enablePullDownRefresh": false
+            }
+            
+        }
+        ,{
+            "path" : "pages/chat/chat",
+            "style" :                                                                                    
+            {
+                "navigationBarTitleText": "聊天窗口",
+                "enablePullDownRefresh": false
+            }
+            
+        }
+        ,{
+            "path" : "pages/information/information",
+            "style" :                                                                                    
+            {
+                "navigationBarTitleText": "个人信息",
+                "enablePullDownRefresh": false
+            }
+            
+        }
+    ],
+	"globalStyle": {
+		"navigationBarTextStyle": "white",
+		"navigationBarTitleText": "测试聊天室",
+		"navigationBarBackgroundColor": "#5555ff",
+		"backgroundColor": "#F8F8F8",
+		"app-plus": {
+			"background": "#efeff4"
+		}
+	},
+	"tabBar":{
+		"selectedColor":"#1296db",
+		"list":[
+			{
+				"pagePath":"pages/home/home",
+				"text":"首页",
+				"iconPath":"static/home-fill.png",
+				"selectedIconPath":"static/home.png"
+			},
+			{
+				"pagePath":"pages/game/game",
+				"text":"游戏",
+				"iconPath":"static/atm.png",
+				"selectedIconPath":"static/atm-fill.png"
+			},
+			{
+				"pagePath":"pages/mine/mine",
+				"text":"我的",
+				"iconPath":"static/bussiness-man-fill.png",
+				"selectedIconPath":"static/bussiness.png"
+			}
+		]
+	}
+}
