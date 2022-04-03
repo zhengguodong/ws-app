@@ -14,11 +14,18 @@
 	export default {
 		data() {
 			return {
-				value:''
+				value:'',
 			}
 		},
 		methods: {
 			
+		},
+		onLoad:(option)=>{
+			console.log(option.id)
+			uni.setNavigationBarTitle({
+			    title: `聊天室（${option.id}）`
+			});
+
 		}
 	}
 </script>

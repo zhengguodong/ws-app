@@ -6,7 +6,7 @@
 		</view>
 		<view id="bottom">
 			<uni-list>
-				<uni-list-item title="好友abc" clickable  @click="onClick" ></uni-list-item>
+				<uni-list-item title="好友abc" clickable  @click="onClick(1)" ></uni-list-item>
 				<uni-list-item title="好友abc"  clickable @click="onClick($event,1)" ></uni-list-item>
 				<uni-list-item title="好友abc"  clickable @click="onClick($event,1)" ></uni-list-item>
 				<uni-list-item title="好友abc" clickable  @click="onClick" ></uni-list-item>
@@ -46,9 +46,9 @@
 			dian(){
 				console.log("12111")
 			},
-			onClick(){
+			onClick(val){
 				uni.navigateTo({
-					url:"../chat/chat"
+					url:`../chat/chat?id=${val}`,
 				})
 			}
 		},

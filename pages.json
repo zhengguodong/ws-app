@@ -71,6 +71,15 @@
             }
             
         }
+        ,{
+            "path" : "pages/tx/tx",
+            "style" :                                                                                    
+            {
+                "navigationBarTitleText": "上传头像",
+                "enablePullDownRefresh": false
+            }
+            
+        }
     ],
 	"globalStyle": {
 		"navigationBarTextStyle": "white",

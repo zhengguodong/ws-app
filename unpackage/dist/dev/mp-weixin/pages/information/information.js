@@ -101,6 +101,9 @@ try {
     },
     uniEasyinput: function() {
       return __webpack_require__.e(/*! import() | uni_modules/uni-easyinput/components/uni-easyinput/uni-easyinput */ "uni_modules/uni-easyinput/components/uni-easyinput/uni-easyinput").then(__webpack_require__.bind(null, /*! @/uni_modules/uni-easyinput/components/uni-easyinput/uni-easyinput.vue */ 69))
+    },
+    uniDatetimePicker: function() {
+      return Promise.all(/*! import() | uni_modules/uni-datetime-picker/components/uni-datetime-picker/uni-datetime-picker */[__webpack_require__.e("common/vendor"), __webpack_require__.e("uni_modules/uni-datetime-picker/components/uni-datetime-picker/uni-datetime-picker")]).then(__webpack_require__.bind(null, /*! @/uni_modules/uni-datetime-picker/components/uni-datetime-picker/uni-datetime-picker.vue */ 189))
     }
   }
 } catch (e) {
@@ -157,7 +160,8 @@ __webpack_require__.r(__webpack_exports__);
 /***/ (function(module, exports, __webpack_require__) {
 
 "use strict";
-Object.defineProperty(exports, "__esModule", { value: true });exports.default = void 0; //
+/* WEBPACK VAR INJECTION */(function(uni) {Object.defineProperty(exports, "__esModule", { value: true });exports.default = void 0; //
+//
 //
 //
 //
@@ -190,7 +194,59 @@ var _default =
 
 
   },
-  methods: {} };exports.default = _default;
+  mounted: function mounted() {
+    this.getdata();
+  },
+  methods: {
+    submitForm: function submitForm() {
+      if (this.formData.name != '' && this.formData.email != '' && this.formData.signature != '' && this.formData.birthday != '') {
+        uni.request({
+          method: "POST",
+          url: "http://localhost:8082/setInfo",
+          data: {
+            id: uni.getStorageSync("id"),
+            name: this.formData.name,
+            email: this.formData.email,
+            autograph: this.formData.signature,
+            birthday: this.formData.birthday },
+
+          success: function success() {
+            uni.showToast({
+              icon: "success",
+              title: "修改成功！" });
+
+            setTimeout(function () {
+              uni.switchTab({
+                url: "../mine/mine" });
+
+            }, 1000);
+
+          } });
+
+      } else {
+        uni.showToast({
+          icon: "error",
+          title: "请完整填写数据！" });
+
+      }
+
+    },
+    getdata: function getdata() {var _this = this;
+      uni.request({
+        method: "POST",
+        data: {
+          id: uni.getStorageSync("id") },
+
+        url: "http://localhost:8082/getdata",
+        success: function success(res) {
+          _this.formData.name = res.data.name;
+          _this.formData.email = res.data.email;
+          _this.formData.signature = res.data.autograph;
+          _this.formData.birthday = res.data.birthday.substring(0, 10);
+        } });
+
+    } } };exports.default = _default;
+/* WEBPACK VAR INJECTION */}.call(this, __webpack_require__(/*! ./node_modules/@dcloudio/uni-mp-weixin/dist/index.js */ 1)["default"]))
 
 /***/ })
 

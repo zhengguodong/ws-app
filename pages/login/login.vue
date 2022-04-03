@@ -31,11 +31,54 @@
 		},
 		methods: {
 			login(){
-				uni.switchTab ({
-					url:"../home/home"
+				if(this.formData.name!=''&&this.formData.password!=''){
+					uni.request({
+					method:"POST",
+					url:"http://localhost:8082/login",
+					data:{
+						username:this.formData.name,
+						password:this.formData.password
+					},
+					success:(res)=>{
+						uni.setStorageSync("id",res.data.data.id)
+						uni.setStorageSync("autograph",res.data.data.autograph)
+						uni.setStorageSync("name",res.data.data.name||res.data.data.username)
+						console.log("login",res)
+						if(res.data.code==200){
+							uni.showToast({
+								icon:"success",
+								title:"登录成功！"
+							})
+							setTimeout(()=>{
+								uni.switchTab({
+								url:"../home/home"
+								})
+							},500)
+							
+						}else{
+							uni.showToast({
+								icon:"error",
+								title:"账号或密码错误，请重新输入！"
+							})
+						}
+						
+					},
+					fail:()=>{
+						uni.showToast({
+							icon:"error",
+							title:"请联系管理员！"
+						})
+					}
 				})
+				}else{
+					uni.showToast({
+						icon:"error",
+						title:"请完整输入信息！"
+					})
+				}
+				
+				
 			},
-			register(){},
 			test(){
 				uni.navigateTo({
 					url:"../register/register"

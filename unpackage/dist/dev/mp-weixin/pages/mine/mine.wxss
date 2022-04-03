@@ -518,6 +518,7 @@
   height: 150px;
   background-color: pink;
   border-radius: 50%;
+  overflow: hidden;
 }
 #mine #mid {
   margin-top: 5px;

@@ -123,6 +123,16 @@ var render = function() {
   var _vm = this
   var _h = _vm.$createElement
   var _c = _vm._self._c || _h
+  var m0 = __webpack_require__(/*! ../../static/1a.jpg */ 226)
+
+  _vm.$mp.data = Object.assign(
+    {},
+    {
+      $root: {
+        m0: m0
+      }
+    }
+  )
 }
 var recyclableRender = false
 var staticRenderFns = []
@@ -172,6 +182,8 @@ __webpack_require__.r(__webpack_exports__);
 
 
 
+
+
 __webpack_require__(/*! ../../style/donghua.css */ 46); //
 //
 //
@@ -187,10 +199,24 @@ __webpack_require__(/*! ../../style/donghua.css */ 46); //
 //
 //
 //
-var _default = { data: function data() {return {};}, methods: { onClick: function onClick() {uni.navigateTo({ url: "../information/information" });}, uptx: function uptx() {},
+//
+//
+var _default = { data: function data() {return { msg: '', name: '' };}, onLoad: function onLoad() {this.msg = uni.getStorageSync("autograph");this.name = uni.getStorageSync("name");}, methods: { onClick: function onClick() {uni.navigateTo({ url: "../information/information" });},
+    uptx: function uptx() {
+      // uni.navigateTo({
+      // 	url:"../tx/tx"
+      // })
+    },
     out: function out() {
-      uni.redirectTo({
-        url: "../login/login" });
+      uni.showToast({
+        icon: "loading",
+        title: "正在登出。。。。" });
+
+      setTimeout(function () {
+        uni.redirectTo({
+          url: "../login/login" });
+
+      }, 1000);
 
     } },
 

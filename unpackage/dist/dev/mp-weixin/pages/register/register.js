@@ -205,8 +205,8 @@ var _default =
         username: '',
         password: '',
         email: '',
-        value: '',
-        range: [{ "value": 0, "text": "男" }, { "value": 1, "text": "女" }] },
+        value: 0,
+        range: [{ "value": 1, "text": "男" }, { "value": 2, "text": "女" }] },
 
       rules: {
         // 对name字段进行必填验证
@@ -222,16 +222,13 @@ var _default =
 
 
 
-        // 对email字段进行必填验证
+
         email: {
           rules: [
-          // 	{
-          // 	format: 'email',
-          // 	errorMessage: '请输入正确的邮箱地址',
-          // },
+
           {
             required: true,
-            errorMessage: '请输入账号' }] },
+            errorMessage: '请输入邮箱' }] },
 
 
         password: {
@@ -253,29 +250,57 @@ var _default =
 
   },
   methods: {
-    /**
-              * 复写 binddata 方法，如果只是为了校验，无复杂自定义操作，可忽略此方法
-              * @param {String} name 字段名称
-              * @param {String} value 表单域的值
-              */
-    // binddata(name,value){
-    // 通过 input 事件设置表单指定 name 的值
-    //   this.$refs.form.setValue(name, value)
-    // },
-    // 触发提交表单
-    submit: function submit() {var _this = this;
-      this.$refs.form.validate().then(function (res) {
-        setTimeout(function () {
-          uni.navigateTo({
-            url: "../login/login" });
+    submit: function submit() {
+      if (this.formData.username != '' && this.formData.password != '' && this.formData.email != '' && this.formData.value != '') {
+        uni.request({
+          method: "POST",
+          url: "http://localhost:8082/register",
+          data: {
+            username: this.formData.username,
+            password: this.formData.password,
+            email: this.formData.email,
+            gender: this.formData.value },
 
-        }, 1000);
 
-        _this.$refs.popup.open('center');
-        console.log('表单数据信息：', res);
-      }).catch(function (err) {
-        console.log('表单错误信息：', err);
-      });
+          success: function success(res) {
+            if (res.data.code == 200) {
+              uni.showToast({
+                icon: "success",
+                title: "注册成功！" });
+
+              setTimeout(function () {
+                uni.navigateTo({
+                  url: "../login/login" });
+
+              }, 500);
+
+            } else if (res.data.code == 300) {
+              uni.showToast({
+                icon: "error",
+                title: "账号已被注册，请重新注册！" });
+
+            } else {
+              uni.showToast({
+                icon: "error",
+                title: "注册失败！" });
+
+            }
+
+          },
+          fail: function fail() {
+            uni.showToast({
+              icon: "error",
+              title: "请联系管理员！" });
+
+          } });
+
+      } else {
+        uni.showToast({
+          icon: "error",
+          title: "请完整输入信息！" });
+
+      }
+
     },
     change: function change(e) {
       console.log(this.formData.value);

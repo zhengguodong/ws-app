@@ -1,8 +1,10 @@
 <template>
 	<view id="mine">
-		<view id="header"></view>
-		<view id="mid">zgd</view>
-		<view id="dh">hhhhhhhhh </view>
+		<view id="header">
+			<img src="../../static/1a.jpg" alt="" style="width:100%;height: 100%;">
+		</view>
+		<view id="mid">{{name}}</view>
+		<view id="dh">{{msg}} </view>
 		<view id="bottom">
 			<uni-list>
 				<uni-list-item title="个人信息" clickable  @click="onClick" ></uni-list-item>
@@ -18,8 +20,13 @@
 	export default {
 		data() {
 			return {
-				
+				msg:'',
+				name:''
 			}
+		},
+		onLoad() {
+			this.msg=uni.getStorageSync("autograph")
+			this.name=uni.getStorageSync("name")
 		},
 		methods: {
 			onClick(){
@@ -28,12 +35,21 @@
 				})
 			},
 			uptx(){
-				
+				// uni.navigateTo({
+				// 	url:"../tx/tx"
+				// })
 			},
 			out(){
-				uni.redirectTo({
-					url:"../login/login"
+				uni.showToast({
+					icon:"loading",
+					title:"正在登出。。。。"
 				})
+				setTimeout(()=>{
+					uni.redirectTo({
+						url:"../login/login"
+					})
+				},1000)
+				
 			}
 			
 			
@@ -62,6 +78,7 @@
 			height: 150px;
 			background-color: pink;
 			border-radius: 50%;
+			overflow: hidden;
 		}
 		#mid{
 			margin-top: 5px;

@@ -207,9 +207,9 @@ var _default =
     dian: function dian() {
       console.log("12111");
     },
-    onClick: function onClick() {
+    onClick: function onClick(val) {
       uni.navigateTo({
-        url: "../chat/chat" });
+        url: "../chat/chat?id=".concat(val) });
 
     } },
 
